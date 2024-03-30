@@ -33,10 +33,10 @@ params.terrain.geom.unit_normal = [0;0;1];
 params.terrain.geom.point = zeros(3,1);
 
 % plane visualization parameters:
-params.terrain.viz.plane.face.color = 0.5*[0,1,0];
-params.terrain.viz.plane.face.alpha = 0.75;
-params.terrain.viz.plane.edge.color = 'none';
-params.terrain.viz.plane.edge.alpha = 1;
+params.terrain.viz.face.color = 0.5*[0,1,0];
+params.terrain.viz.face.alpha = 0.75;
+params.terrain.viz.edge.color = 'none';
+params.terrain.viz.edge.alpha = 1;
 
 %% Body-specific parameters
 params.bodies = bodies;
