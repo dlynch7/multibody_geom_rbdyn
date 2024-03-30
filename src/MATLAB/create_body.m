@@ -14,7 +14,7 @@
 %   primitive: a string, by which the user specifies the body type. Can be
 %       'ellipsoid',
 %       'cylinder', or
-%       'rect_prism'
+%       'rect-prism'
 %   semi_axes: a struct defining the body dimensions.
 %              If primitive is 'ellipsoid' or 'rect_prism', semi_axes has
 %              the following fields:
@@ -59,7 +59,7 @@ body_params.primitive = primitive; % 'rect_prism','cylinder',or 'ellipsoid'
 body_params.dyn.mass = mass;
 
 switch primitive
-    case 'rect_prism'
+    case 'rect-prism'
         % extract dimensions from input struct:
         l = 2*semi_axes.x; % length [m]
         w = 2*semi_axes.y; % width  [m]
@@ -78,10 +78,10 @@ switch primitive
         % visualization parameters that are not intrinsic to rectangular 
         % prism geometry:
         body_params.viz.face.num = 10;
-        body_params.viz.face.color = 0.75*[0 1 1];
-        body_params.viz.face.alpha = 0.75;
+        body_params.viz.face.color = 0.75*[1 1 0];
+        body_params.viz.face.alpha = 0.5;
         body_params.viz.edge.color = [0 0 0];
-        body_params.viz.edge.alpha = 0.5;
+        body_params.viz.edge.alpha = 0.25;
         
         % create a triangulation object to approximate the rectangular
         % prism (used when computing granular drag forces with RFT):
@@ -101,7 +101,7 @@ switch primitive
     case 'cylinder'
         % extract dimensions from input struct:
         r = semi_axes.r; % radius [m]
-        h = semi_axes.h; % height [m]
+        h = 2*semi_axes.h; % height [m]
         
         % inertia [kg*m^2] about each principal axis:
         Ixx = body_params.dyn.mass*(3*(r^2) + h^2)/12;
@@ -116,9 +116,9 @@ switch primitive
         % geometry:
         body_params.viz.face.num = 40;
         body_params.viz.face.color = 0.75*[0 1 1];
-        body_params.viz.face.alpha = 0.75;
+        body_params.viz.face.alpha = 0.5;
         body_params.viz.edge.color = [0 0 0];
-        body_params.viz.edge.alpha = 0.5;
+        body_params.viz.edge.alpha = 0.25;
         
         % this computation ensures triangulation elements aren't too
         % stretched or squished:
@@ -161,10 +161,10 @@ switch primitive
         % visualization parameters that are not intrinsic to ellipsoid
         % geometry:
         body_params.viz.face.num = 40;
-        body_params.viz.face.color = 0.75*[0 1 1];
-        body_params.viz.face.alpha = 0.75;
+        body_params.viz.face.color = 0.75*[1 0 1];
+        body_params.viz.face.alpha = 0.5;
         body_params.viz.edge.color = [0 0 0];
-        body_params.viz.edge.alpha = 0.5;
+        body_params.viz.edge.alpha = 0.25;
         
         % create a triangulation object to approximate the ellipsoid (used
         % when computing granular drag forces with RFT):
