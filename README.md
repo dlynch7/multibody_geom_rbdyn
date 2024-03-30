@@ -1,2 +1,2 @@
 # multibody_geom_rbdyn
-A geometric integrator for multibody dynamics
+A Lie group geometric integrator for multibody dynamics
